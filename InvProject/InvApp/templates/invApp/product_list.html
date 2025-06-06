@@ -1,0 +1,44 @@
+{% extends "invApp/layout.html" %}
+
+{% block title %} Product List {% endblock %}
+
+{% block content %}
+    <h1 class="text-center">Products</h1>
+    <table class="table table-bordered table-striped ">
+        <thead class="thead-dark">
+            <tr>
+                <th>Product ID</th>
+                <th>Image</th> <!-- Nouvelle colonne -->
+                <th>Name</th>
+                <th>SKU</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Supplier</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.product_id }} </td>
+                <td>
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width:80px; height:80px; object-fit:cover; border-radius:6px;">
+                    {% else %}
+                        <span class="text-muted">Aucune image</span>
+                    {% endif %}
+                </td>
+                <td>{{ product.name }} </td>
+                <td>{{ product.sku }} </td>
+                <td>{{ product.price }} </td>
+                <td>{{ product.quantity }} </td>
+                <td>{{ product.supplier }} </td>
+                <td> 
+                    <a href="{% url 'product_update' product.product_id %}" class="btn btn-warning" >Update</a>
+                    <a href="{% url 'product_delete' product.product_id %}" class="btn btn-danger" >Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

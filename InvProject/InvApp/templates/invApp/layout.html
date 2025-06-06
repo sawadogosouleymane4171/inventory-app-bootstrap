@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Inventory App{% endblock %}</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 70px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+        }
+        .navbar {
+            background: linear-gradient(90deg, #212529 60%, #495057 100%);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+            border-bottom: 2px solid #ffc107;
+        }
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: color 0.2s;
+        }
+        .navbar-brand {
+            font-size: 2rem;
+            letter-spacing: 2px;
+            text-shadow: 1px 2px 8px rgba(0,0,0,0.12);
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #ffc107 !important;
+            text-shadow: 0 2px 8px rgba(255,193,7,0.15);
+        }
+        .container {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 70vh;
+        }
+        .main-card {
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(44,62,80,0.10), 0 1.5px 4px rgba(44,62,80,0.06);
+            padding: 2.5rem 2.5rem 2rem 2.5rem;
+            width: 100%;
+            max-width: 900px;
+            animation: fadeIn 0.7s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .btn {
+            border-radius: 20px;
+            font-weight: 500;
+            transition: box-shadow 0.2s;
+        }
+        .btn:hover, .btn:focus {
+            box-shadow: 0 2px 12px rgba(255,193,7,0.18);
+        }
+        h1, h2, h3 {
+            font-weight: 700;
+            color: #343a40;
+            letter-spacing: 1px;
+        }
+        /* Scrollbar custom */
+        ::-webkit-scrollbar {
+            width: 8px;
+            background: #e0e7ff;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #b6bbc7;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">Inventory App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link{% if request.resolver_match.url_name == 'product_create' %} active{% endif %}" href="{% url 'product_create' %}">Add Product</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link{% if request.resolver_match.url_name == 'product_list' %} active{% endif %}" href="{% url 'product_list' %}">Show Products</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="main-card">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
