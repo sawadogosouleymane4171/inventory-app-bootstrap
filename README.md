@@ -1,15 +1,41 @@
 # Inventory App
 
-Application web de gestion d’inventaire développée avec Django et Bootstrap 5.
+Application web de gestion d’inventaire développée avec **Django** et **Bootstrap 5**.
+
+---
+
+## Sommaire
+
+- [Fonctionnalités](#fonctionnalités)
+- [Prérequis](#prérequis)
+- [Installation](#installation)
+  - [Installation recommandée avec pipenv](#installation-recommandée-avec-pipenv)
+- [Utilisation](#utilisation)
+- [Gestion des dépendances](#gestion-des-dépendances)
+- [Auteur](#auteur)
+
+---
 
 ## Fonctionnalités
 
-- Ajout, modification et suppression de produits
-- Visualisation de la liste des produits
-- Interface utilisateur moderne et responsive grâce à Bootstrap 5
+- Ajouter, modifier et supprimer des produits
+- Visualiser la liste des produits
+- Interface utilisateur moderne et responsive (Bootstrap 5)
 - Gestion des utilisateurs via l’interface d’administration Django
 
+---
+
+## Prérequis
+
+- Python 3.8 ou supérieur
+- [pip](https://pip.pypa.io/en/stable/) ou [pipenv](https://pipenv.pypa.io/en/latest/)
+- Git
+
+---
+
 ## Installation
+
+### Installation recommandée avec pipenv
 
 1. **Cloner le repository**
    ```sh
@@ -17,30 +43,67 @@ Application web de gestion d’inventaire développée avec Django et Bootstrap 
    cd <nom_du_dossier>
    ```
 
-2. **Installer les dépendances**
+2. **Installer pipenv** (si besoin) :
    ```sh
-   pip install -r requirements.txt
+   pip install pipenv
    ```
 
-3. **Appliquer les migrations**
+3. **Créer l'environnement virtuel** :
+   ```sh
+   pipenv shell
+   ```
+
+4. **Installer les dépendances principales** :
+   ```sh
+   pipenv install django pillow django-crispy-bootstrap5 
+   ```
+
+
+5. **Créer les migrations**
+   ```sh
+   python manage.py makemigrations
+   ```
+
+6. **Appliquer les migrations** :
    ```sh
    python manage.py migrate
    ```
 
-4. **Créer un superutilisateur**
+7. **Créer un superutilisateur** :
    ```sh
    python manage.py createsuperuser
    ```
 
-5. **Lancer le serveur**
+8. **Lancer le serveur** :
    ```sh
    python manage.py runserver
    ```
 
+---
+
 ## Utilisation
 
-- Accéder à l’application sur [http://localhost:8000/](http://localhost:8000/)
-- Accéder à l’admin Django sur [http://localhost:8000/admin/](http://localhost:8000/admin/)
+- Accéder à l’application : [http://localhost:8000/](http://localhost:8000/)
+- Accéder à l’interface d’administration : [http://localhost:8000/admin/](http://localhost:8000/admin/)
+
+---
+
+## Gestion des dépendances
+
+- **Pipfile** : décrit les dépendances principales et de développement du projet (remplace `requirements.txt`).
+- **Pipfile.lock** : fige précisément les versions de chaque dépendance pour garantir la reproductibilité de l’environnement.
+
+Pour ajouter d'autres dépendances, utilise par exemple :
+```sh
+pipenv install <nom_du_paquet>
+```
+
+Pour générer un `requirements.txt` à partir de pipenv :
+```sh
+pipenv lock --requirements > requirements.txt
+```
+
+---
 
 ## Auteur
 
@@ -48,4 +111,4 @@ Application web de gestion d’inventaire développée avec Django et Bootstrap 
 
 ---
 
-N’hésite pas à adapter ce fichier selon tes besoins spécifiques !
+_N’hésite pas à adapter ce fichier selon tes besoins spécifiques !_

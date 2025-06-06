@@ -1,0 +1,11 @@
+# Environnements virtuels Python
+.venv/
+venv/
+.env/
+.virtualenvs/
+__pycache__/
+*.pyc
+
+# Base de données SQLite
+InvProject/db.sqlite3
+media/
